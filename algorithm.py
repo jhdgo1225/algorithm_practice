@@ -1,13 +1,27 @@
-# 거스름돈 = n, 거스름 돈 개수 = count
-n = 1260
-count = 0
+# N, M, K를 공백으로 구분하여 입력받기
+n, m, k = map(int, input().split())
+# N개의 수를 공백으로 구분하여 입력받기
+data = list(map(int, input().split()))
 
-# 큰 단위의 화폐부터 차례대로 확인
-coin_types = [500, 100, 50, 10]
+# data(리스트) 정렬
+data.sort()
 
-# 500원, 100원, 50원, 10원 순으로 거스름 돈을 나누고 각 동전의 수를 count
-for coin in coin_types:
-    count += n // coin
-    n %= coin
+# data 변수 안의 첫 번째로 큰 수
+first = data[n-1]
 
-print(count)
+# data 변수 안의 두 번째로 큰 수
+second = data[n-2]
+
+result = 0
+
+while True:
+    for i in range(k):
+        if m == 0:
+            break
+        result += first
+    if m == 0:
+        break
+    result += second
+    m -= 1
+
+print(result)
