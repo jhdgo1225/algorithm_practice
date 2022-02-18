@@ -1,4 +1,13 @@
 s = input()
+new = ''
+compare = s[0]
 
-count0 = s.count("0")
-count1 = s.count("1")
+for i in s:
+    if i != compare:
+        new += compare
+        compare = i
+new += compare
+
+cnt = new.count
+
+print(min(cnt("0"), cnt("1")))
