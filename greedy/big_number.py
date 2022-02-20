@@ -3,25 +3,16 @@ n, m, k = map(int, input().split())
 # N개의 수를 공백으로 구분하여 입력받기
 data = list(map(int, input().split()))
 
-# data(리스트) 정렬
-data.sort()
+data.sort() # 입력받은 수를 정렬하기
+one = data[-1] # 가장 큰 수
+two = data[-2] # 두 번째로 큰 수
 
-# data 변수 안의 첫 번째로 큰 수
-first = data[n-1]
-
-# data 변수 안의 두 번째로 큰 수
-second = data[n-2]
+# 가장 큰 수가 더해지는 횟수 계산
+count = int(m / (k + 1)) * k
+count += m % (k + 1)
 
 result = 0
-
-while True:
-    for i in range(k):
-        if m == 0:
-            break
-        result += first
-    if m == 0:
-        break
-    result += second
-    m -= 1
+result += (count) * one
+result += (m - count) * two
 
 print(result)

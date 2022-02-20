@@ -1,19 +1,17 @@
 n, k = map(int, input().split())
 result = 0
 
-# N이 K 이상이라면 K로 계속 나누기
-while n >= k:
-    # N이 K로 나누어 떨어지지 않는다면 N에서 1씩 빼기
-    while n % k != 0:
-        n -= 1
+while True:
+    # N이 K로 나누었을 때 나머지가 발생하면 1번 과정 한번에 시행
+    if n % k:
+        result += (n % k)
+        n -= (n % k)
+    # N이 K로 나누어떨어질 때 2번 과정 시행
+    else:
+        n //= k
         result += 1
-    # K로 나누기
-    n //= k
-    result += 1
+    # N이 1이면 반복문 탈출
+    if n == 1:
+        break
 
-# 마지막으로 남은 수에 대하여 1씩 빼기
-while n > 1:
-    n -= 1
-    result += 1
-
-print(result)
+print(result) # 최종 답안 출력
